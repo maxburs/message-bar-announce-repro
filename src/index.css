@@ -1,0 +1,9 @@
+.fui-FluentProvider {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+label > * {
+    margin-left: 8px;
+}
