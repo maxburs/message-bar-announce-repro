@@ -26,16 +26,16 @@ const App = () => {
       </MessageBar>;
       break;
     case 'aria-live-announcer':
-      messageElement = <AriaLiveAnnouncer><p key="test">{alertMessage}</p></AriaLiveAnnouncer>;
+      messageElement = <AriaLiveAnnouncer><p>{alertMessage}</p></AriaLiveAnnouncer>;
       break;
     case 'aria-live':
-      messageElement = <div aria-live="assertive"><p key="test">{alertMessage}</p></div>;
+      messageElement = <div aria-live="assertive"><p>{alertMessage}</p></div>;
       break;
     case 'role-alert':
-      messageElement = <div role="alert"><p key="test">{alertMessage}</p></div>;
+      messageElement = <div role="alert"><p>{alertMessage}</p></div>;
       break;
     case 'aria-live--role-alert':
-      messageElement = <div role="alert" aria-live="assertive"><p key="test">{alertMessage}</p></div>;
+      messageElement = <div role="alert" aria-live="assertive"><p>{alertMessage}</p></div>;
       break;
     default:
       throw new Error(`Unexpected messageComponent "${messageComponent}"`)
