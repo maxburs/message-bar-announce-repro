@@ -31,7 +31,7 @@ const App = () => {
     case 'role-alert':
       messageElement = <div id="announce" role="alert"><span key="test">{alertMessage}</span></div>;
       break;
-    case 'role-alert--aria-live':
+    case 'aria-live--role-alert':
       messageElement = <div id="announce" role="alert" aria-live="assertive"><span key="test">{alertMessage}</span></div>;
       break;
     default:
