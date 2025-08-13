@@ -5,6 +5,10 @@ import {
   webLightTheme,
   MessageBar,
   MessageBarBody,
+  useId,
+  Select,
+  Dropdown,
+  Option,
 } from '@fluentui/react-components';
 import './index.css'
 
@@ -38,7 +42,7 @@ const App = () => {
   return <>
     <label>
       Component type
-      <select defaultValue={messageComponent} onChange={e => setMessageComponent(e.target.value)}>
+      <select value={messageComponent} onChange={e => setMessageComponent(e.target.value)}>
         <option value='message-bar'>{'<MessageBar intent="error">'}</option>
         <option value='aria-live'>{'<div aria-live="assertive >'}</option>
         <option value='role-alert'>{'<div role="alert" >'}</option>
@@ -48,11 +52,30 @@ const App = () => {
 
 
     <label>
-      Message text
-      <select defaultValue={message} onChange={e => setTimeout(() => setMessage(e.target.value), 1000)}>
+      Message text (immediate)
+      <select value={message} onChange={e => setMessage(e.target.value)}>
         <option value='Hello'>1</option>
         <option value='Fabric Fabric Fabric'>2</option>
       </select>
+    </label>
+
+
+    <label>
+      Message text (Fluent 9 {'<select />'})
+      <Select onChange={(_e, data) => setMessage(data.value)} value={message}>
+        <option value='Hello'>1</option>
+        <option value='Fabric Fabric Fabric'>2</option>
+      </Select>
+    </label>
+
+
+
+    <label>
+      Message text (Fluent 9 {'<Dropdown />'})
+      <Dropdown value={message === 'Hello' ? '1' : '2'} onOptionSelect={(_e, data) => setMessage(data.selectedOptions[0])}>
+        <Option value='Hello'>1</Option>
+        <Option value='Fabric Fabric Fabric'>2</Option>
+      </Dropdown>
     </label>
 
     {messageElement}
