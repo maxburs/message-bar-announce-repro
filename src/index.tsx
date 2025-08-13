@@ -59,6 +59,17 @@ const App = () => {
       </select>
     </label>
 
+    <label>
+      Message text (delayed)
+      <select value={message} onChange={e => {
+        const value = e.target.value;
+        setTimeout(() => setMessage(value), 1000)
+      }}>
+        <option value='Hello'>1</option>
+        <option value='Fabric Fabric Fabric'>2</option>
+      </select>
+    </label>
+
 
     <label>
       Message text (Fluent 9 {'<select />'})
