@@ -8,6 +8,7 @@ import {
   Select,
   Dropdown,
   Option,
+  AriaLiveAnnouncer,
 } from '@fluentui/react-components';
 import './index.css'
 
@@ -24,14 +25,17 @@ const App = () => {
         <MessageBarBody>{alertMessage}</MessageBarBody>
       </MessageBar>;
       break;
+    case 'aria-live-announcer':
+      messageElement = <AriaLiveAnnouncer><p key="test">{alertMessage}</p></AriaLiveAnnouncer>;
+      break;
     case 'aria-live':
-      messageElement = <div id="announce" aria-live="assertive"><span key="test">{alertMessage}</span></div>;
+      messageElement = <div aria-live="assertive"><p key="test">{alertMessage}</p></div>;
       break;
     case 'role-alert':
-      messageElement = <div id="announce" role="alert"><span key="test">{alertMessage}</span></div>;
+      messageElement = <div role="alert"><p key="test">{alertMessage}</p></div>;
       break;
     case 'aria-live--role-alert':
-      messageElement = <div id="announce" role="alert" aria-live="assertive"><span key="test">{alertMessage}</span></div>;
+      messageElement = <div role="alert" aria-live="assertive"><p key="test">{alertMessage}</p></div>;
       break;
     default:
       throw new Error(`Unexpected messageComponent "${messageComponent}"`)
@@ -43,6 +47,7 @@ const App = () => {
       Component type
       <select value={messageComponent} onChange={e => setMessageComponent(e.target.value)}>
         <option value='message-bar'>{'<MessageBar intent="error">'}</option>
+        <option value='aria-live-announcer'>{'<AriaLiveAnnouncer />'}</option>
         <option value='aria-live'>{'<div aria-live="assertive >'}</option>
         <option value='role-alert'>{'<div role="alert" >'}</option>
         <option value='aria-live--role-alert'>{'<div role="alert" aria-live="assertive >'}</option>
